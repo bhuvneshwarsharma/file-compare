@@ -2,10 +2,14 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
 public class FileComparision {
+	
+	private FileComparision(){}
+	
 	public static void main (String a[]) throws IOException {
 		
 		System.out.println("Press 1 : Match By Full Name .");
@@ -32,7 +36,7 @@ public class FileComparision {
 		FileReader fr1 = new FileReader(homePath+"/hootcode/java/file-compare/resources/File1.txt");
 		BufferedReader br1 = new BufferedReader(fr1);
 		
-		ArrayList<String> lineAr1 = new ArrayList<String>();
+		List<String> lineAr1 = new ArrayList<String>();
 		String line;
 		while((line = br1.readLine()) != null)
 			lineAr1.add(line);
@@ -40,7 +44,7 @@ public class FileComparision {
 		FileReader fr2 = new FileReader(homePath+"//hootcode/java/file-compare/resources/File2.txt");
 		BufferedReader br2 = new BufferedReader(fr2);
 		
-		ArrayList<String> lineAr2 = new ArrayList<String>();
+		List<String> lineAr2 = new ArrayList<String>();
 		while((line = br2.readLine()) != null)
 			lineAr2.add(line);
 		
@@ -59,7 +63,7 @@ public class FileComparision {
 		}
 	}
 	
-	public static void matchByFullName(ArrayList<String> lineAr1, ArrayList<String> lineAr2){
+	public static void matchByFullName(List<String> lineAr1, List<String> lineAr2){
 		System.out.println("Matching with full name : ");
 		for(String str1 : lineAr1) {
 			for(String str2 : lineAr2) {
@@ -69,7 +73,7 @@ public class FileComparision {
 		}
 	}
 	
-	public static void matchByFirstName(ArrayList<String> lineAr1, ArrayList<String> lineAr2){
+	public static void matchByFirstName(List<String> lineAr1, List<String> lineAr2){
 		System.out.println("Matching with first name : ");
 		for(String str1 : lineAr1) {
 			String[] strArr1 = str1.split(" ");
@@ -82,26 +86,26 @@ public class FileComparision {
 		}
 	}
 	
-	public static void matchByLastName(ArrayList<String> lineAr1, ArrayList<String> lineAr2){
+	public static void matchByLastName(List<String> lineAr1, List<String> lineAr2){
 		System.out.println("Matching with last name : ");
 		for(String str1 : lineAr1) {
 			String[] strArr1 = str1.split(" ");
 			for(String str2 : lineAr2) { 
 				String[] strArr2 = str2.split(" ");
-				if(strArr1.length>1 && strArr1.length>1 && strArr1[strArr1.length-1].equalsIgnoreCase(strArr2[strArr2.length-1])) {
+				if(strArr1.length>1 && strArr2.length>1 && strArr1[strArr1.length-1].equalsIgnoreCase(strArr2[strArr2.length-1])) {
 					System.out.println(str1 + " in 1st File is matching to "+ str2 +" in 2nd File");
 				}
 			}
 		}
 	}
 	
-	public static void matchByFirstNameAndLastName(ArrayList<String> lineAr1, ArrayList<String> lineAr2){
+	public static void matchByFirstNameAndLastName(List<String> lineAr1, List<String> lineAr2){
 		System.out.println("Matching with first name and last name : ");
 		for(String str1 : lineAr1) {
 			String[] strArr1 = str1.split(" ");
 			for(String str2 : lineAr2) {
 				String[] strArr2 = str2.split(" ");
-				if(strArr1.length>1 && strArr1.length>1) {
+				if(strArr1.length>1 && strArr2.length>1) {
 					if(strArr1[0].equalsIgnoreCase(strArr2[0]) &&
 							strArr1[strArr1.length-1].equalsIgnoreCase(strArr2[strArr2.length-1])) {
 							System.out.println(str1 + " in 1st File is matching to "+ str2 +" in 2nd File");
@@ -111,20 +115,17 @@ public class FileComparision {
 		}
 	}
 	
-	public static void matchByFirstNameOrLastName(ArrayList<String> lineAr1, ArrayList<String> lineAr2){
+	public static void matchByFirstNameOrLastName(List<String> lineAr1, List<String> lineAr2){
 		System.out.println("Matching with first name or last name : ");
 		for(String str1 : lineAr1) {
 			String[] strArr1 = str1.split(" ");
 			for(String str2 : lineAr2) {
 				String[] strArr2 = str2.split(" ");
-				if(strArr1.length==1 || strArr1.length==1) {
-					if(strArr1[0].equalsIgnoreCase(strArr2[0])) {
-							System.out.println(str1 + " in 1st File is matching to "+ str2 +" in 2nd File");
-					} else {
-						if(strArr1[0].equalsIgnoreCase(strArr2[0]) 
-								|| strArr1[strArr1.length-1].equalsIgnoreCase(strArr2[strArr2.length-1])) {
-							System.out.println(str1 + " in 1st File is matching to "+ str2 +" in 2nd File");
-						}
+				if(strArr1[0].equalsIgnoreCase(strArr2[0])) {
+						System.out.println(str1 + " in 1st File is matching to "+ str2 +" in 2nd File");
+				} else {
+					if(strArr1.length>1 && strArr2.length>1 && strArr1[strArr1.length-1].equalsIgnoreCase(strArr2[strArr2.length-1])) {
+						System.out.println(str1 + " in 1st File is matching to "+ str2 +" in 2nd File");
 					}
 				}
 			}
@@ -132,3 +133,4 @@ public class FileComparision {
 	}
 	
 }
+
